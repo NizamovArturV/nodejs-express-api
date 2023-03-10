@@ -6,9 +6,9 @@ import { Container, ContainerModule, interfaces } from 'inversify';
 import ILogger from './logger/logger.interface.js';
 import { TYPES } from './types.js';
 import IExceptionFilter from './errors/exception.filter.interface.js';
-import UserService from "./users/user.service.js";
-import IUserService from "./users/user.service.interface.js";
-import IUserController from "./users/user.controller.interface.js";
+import UserService from './users/user.service.js';
+import IUserService from './users/user.service.interface.js';
+import IUserController from './users/user.controller.interface.js';
 
 export interface IBootstrapReturn {
 	appContainer: Container;
