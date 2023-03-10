@@ -3,16 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./dist/main.js",
     "dev": "nodemon",
-    "dev:inspect": "nodemon -e ts,json --exec node --loader ts-node/esm --inspect=localhost:9222 -r ts-node/register src/main.ts",
-    "build": "tsc",
+    "dev:inspect": "nodemon -e ts,json --exec node --inspect=localhost:9222 -r ts-node/register src/main.ts",
     "lint": "eslint ./src/**",
+    "test": "jest",
+    "test:e2e": "jest --config jest.e2e.config.ts --coverage",
+    "generate": "prisma generate",
     "lint:fix": "eslint ./src/** --fix",
-    "generate": "prisma generate"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -39,15 +40,18 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.17",
+    "@types/jest": "^29.4.0",
     "@types/jsonwebtoken": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.5.0",
     "nodemon": "^2.0.21",
     "prettier": "^2.8.4",
     "prisma": "^4.11.0",
+    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"
   }

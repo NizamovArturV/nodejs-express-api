@@ -1,11 +1,11 @@
-import IUserService from './user.service.interface.js';
-import UserRegisterDto from './dto/user-register.dto.js';
-import UserLoginDto from './dto/user-login.dto.js';
-import User from './user.entity.js';
+import IUserService from './user.service.interface';
+import UserRegisterDto from './dto/user-register.dto';
+import UserLoginDto from './dto/user-login.dto';
+import User from './user.entity';
 import { inject, injectable } from 'inversify';
-import { TYPES } from '../types.js';
-import IConfigService from '../config/config.service.interface.js';
-import IUserRepository from './user.repository.interface.js';
+import { TYPES } from '../types';
+import IConfigService from '../config/config.service.interface';
+import IUserRepository from './user.repository.interface';
 import { UserModel } from '@prisma/client';
 
 @injectable()

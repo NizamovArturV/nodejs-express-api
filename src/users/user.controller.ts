@@ -1,18 +1,18 @@
-import BaseController from '../common/base.controller.js';
+import BaseController from '../common/base.controller';
 import { NextFunction, Request, Response } from 'express';
-import ILogger from '../logger/logger.interface.js';
+import ILogger from '../logger/logger.interface';
 import { inject, injectable } from 'inversify';
-import { TYPES } from '../types.js';
+import { TYPES } from '../types';
 import 'reflect-metadata';
-import IUserController from './user.controller.interface.js';
-import UserLoginDto from './dto/user-login.dto.js';
-import UserRegisterDto from './dto/user-register.dto.js';
-import IUserService from './user.service.interface.js';
-import HttpError from '../errors/http-error.class.js';
-import ValidateMiddleware from '../common/validate.middleware.js';
+import IUserController from './user.controller.interface';
+import UserLoginDto from './dto/user-login.dto';
+import UserRegisterDto from './dto/user-register.dto';
+import IUserService from './user.service.interface';
+import HttpError from '../errors/http-error.class';
+import ValidateMiddleware from '../common/validate.middleware';
 import jsonWebToken from 'jsonwebtoken';
-import IConfigService from '../config/config.service.interface.js';
-import { AuthGuard } from '../common/auth.guard.js';
+import IConfigService from '../config/config.service.interface';
+import { AuthGuard } from '../common/auth.guard';
 const { sign } = jsonWebToken;
 @injectable()
 export default class UserController extends BaseController implements IUserController {
