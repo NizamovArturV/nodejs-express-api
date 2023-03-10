@@ -11,7 +11,7 @@ import IUserService from './users/user.service.interface.js';
 import IUserController from './users/user.controller.interface.js';
 import IConfigService from './config/config.service.interface.js';
 import ConfigService from './config/config.service.js';
-import PrismaService from "./database/prisma.service.js";
+import PrismaService from './database/prisma.service.js';
 
 export interface IBootstrapReturn {
 	appContainer: Container;

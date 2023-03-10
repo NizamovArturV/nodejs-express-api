@@ -6,7 +6,7 @@ import { inject, injectable } from 'inversify';
 import { TYPES } from './types.js';
 import 'reflect-metadata';
 import IExceptionFilter from './errors/exception.filter.interface';
-import PrismaService from "./database/prisma.service.js";
+import PrismaService from './database/prisma.service.js';
 
 @injectable()
 export default class App {

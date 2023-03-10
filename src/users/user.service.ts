@@ -14,7 +14,7 @@ export default class UserService implements IUserService {
 		const newUser = new User(email, name);
 		const salt = Number(this.configService.get('SALT'));
 		await newUser.setPassword(password, salt);
-		console.log(salt)
+		console.log(salt);
 		//Проверка что он есть?
 		//Если есть, возвращаем null
 		//Если нет, то создаем
