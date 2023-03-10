@@ -12,6 +12,7 @@ import HttpError from '../errors/http-error.class.js';
 import ValidateMiddleware from '../common/validate.middleware.js';
 import jsonWebToken from 'jsonwebtoken';
 import IConfigService from '../config/config.service.interface.js';
+import { AuthGuard } from '../common/auth.guard.js';
 const { sign } = jsonWebToken;
 @injectable()
 export default class UserController extends BaseController implements IUserController {
@@ -38,7 +39,7 @@ export default class UserController extends BaseController implements IUserContr
 				path: '/info',
 				method: 'get',
 				function: this.info,
-				middlewares: [],
+				middlewares: [new AuthGuard()],
 			},
 		]);
 	}
@@ -78,7 +79,9 @@ export default class UserController extends BaseController implements IUserContr
 		response: Response,
 		nextFunction: NextFunction,
 	): Promise<void> {
-		this.ok(response, { email: user });
+		const userInfo = await this.userService.getUserInfo(user);
+
+		this.ok(response, { email: userInfo?.email, id: userInfo?.id });
 	}
 
 	private signJWT(email: string, secret: string): Promise<string> {
