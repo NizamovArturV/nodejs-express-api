@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-const { hash, compare} = bcrypt;
+const { hash, compare } = bcrypt;
 
 export default class User {
 	private _password: string;
