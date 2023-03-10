@@ -12,7 +12,7 @@ import IConfigService from './config/config.service.interface';
 
 @injectable()
 export default class App {
-	private app: Express;
+	public app: Express;
 	private server: Server;
 	private port: number;
 
@@ -48,5 +48,9 @@ export default class App {
 
 	private useExceptionsFilters(): void {
 		this.app.use(this.exceptionFilter.catch.bind(this.exceptionFilter));
+	}
+
+	public close(): void {
+		this.server.close();
 	}
 }
