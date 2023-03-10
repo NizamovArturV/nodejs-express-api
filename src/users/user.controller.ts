@@ -25,17 +25,27 @@ export default class UserController extends BaseController implements IUserContr
 				function: this.register,
 				middlewares: [new ValidateMiddleware(UserRegisterDto)],
 			},
-			{ path: '/login', method: 'post', function: this.login },
+			{
+				path: '/login',
+				method: 'post',
+				function: this.login,
+				middlewares: [new ValidateMiddleware(UserLoginDto)],
+			},
 		]);
 	}
 
-	public login(
+	public async login(
 		request: Request<{}, {}, UserLoginDto>,
 		response: Response,
 		nextFunction: NextFunction,
-	): void {
-		console.log(request.body);
-		this.ok(response, 'login');
+	): Promise<void> {
+		const result = await this.userService.validateUser(request.body);
+
+		if (!result) {
+			return nextFunction(new HttpError(401, 'Login error', 'login'));
+		}
+
+		this.ok(response, {});
 	}
 
 	public async register(
