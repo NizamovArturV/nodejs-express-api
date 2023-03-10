@@ -34,6 +34,12 @@ export default class UserController extends BaseController implements IUserContr
 				function: this.login,
 				middlewares: [new ValidateMiddleware(UserLoginDto)],
 			},
+			{
+				path: '/info',
+				method: 'get',
+				function: this.info,
+				middlewares: [],
+			},
 		]);
 	}
 
@@ -65,6 +71,14 @@ export default class UserController extends BaseController implements IUserContr
 		}
 
 		this.ok(response, { email: result.email, id: result.id });
+	}
+
+	public async info(
+		{ user }: Request,
+		response: Response,
+		nextFunction: NextFunction,
+	): Promise<void> {
+		this.ok(response, { email: user });
 	}
 
 	private signJWT(email: string, secret: string): Promise<string> {

@@ -4,4 +4,6 @@ export default interface IUserController {
 	login: (request: Request, response: Response, nextFunction: NextFunction) => void;
 
 	register: (request: Request, response: Response, nextFunction: NextFunction) => void;
+
+	info: (request: Request, response: Response, nextFunction: NextFunction) => void;
 }
